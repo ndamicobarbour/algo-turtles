@@ -4,6 +4,7 @@ from visualizer import DataVisualizer
 
 sortables = [16,4,1,41,5,67,7,4,32,3]
 example = DataVisualizer(sortables)
+example.setup_counter()
 
 print(example.datacount)
 
@@ -16,7 +17,11 @@ for i in range(example.datacount):
         # traverse the array from 0 to n-i-1
         # Swap if the element found is greater
         # than the next element
-        example.switch_if_greater(j, j+1)
+        val_one = example.read_at(j)
+        val_two = example.read_at(j+1)
+        if val_one > val_two:
+            example.update_at(j, val_two)
+            example.update_at(j+1, val_one)
 
 
 # print([ DataVisualizer.ref[i]['data'] for i in DataVisualizer.ref])
